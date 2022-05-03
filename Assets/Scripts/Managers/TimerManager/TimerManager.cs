@@ -6,7 +6,7 @@ namespace Managers
     {
        private UserManager _userManager;
         
-        private User _currentUser;
+        private IUser _currentUser;
         private float _timer; // In seconds
 
         public void Init(UserManager userManager)

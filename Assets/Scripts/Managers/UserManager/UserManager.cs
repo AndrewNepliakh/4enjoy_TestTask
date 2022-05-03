@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class UserManager
+    public class UserManager : IUserManager
     {
-        private User _currentUser;
+        private IUser _currentUser;
 
-        public User CurrentUser
+        public IUser CurrentUser
         {
             get
             {

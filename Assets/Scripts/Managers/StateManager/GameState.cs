@@ -7,7 +7,7 @@ namespace Managers
 {
     public class GameState : IState
     {
-        private TimerManager _timerManager;
+        private ITimer _timerManager;
         private UserManager _userManager;
         
         private bool _isStarted;
