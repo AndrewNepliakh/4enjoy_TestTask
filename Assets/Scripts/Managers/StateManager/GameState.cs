@@ -1,13 +1,27 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using Zenject;
 
-namespace Managers.StateManager
+namespace Managers
 {
-    public class GameState : IState, IUpdatable
+    public class GameState : IState
     {
-        public void Enter()
+        private TimerManager _timerManager;
+        private UserManager _userManager;
+        
+        private bool _isStarted;
+        
+        public void Enter(Hashtable args)
         {
-           Debug.LogError("Enter GameSate");
+            _timerManager = args[Constants.TIMER_MANAGER] as TimerManager;
+            _userManager = args[Constants.USER_MANAGER] as UserManager;
+            
+            _timerManager.Init(_userManager);
+            
+            _isStarted = true;
+            
+            Debug.LogError("Enter GameSate");
         }
 
         public void Exit()
@@ -17,7 +31,9 @@ namespace Managers.StateManager
 
         public void Update()
         {
-            
+            if(!_isStarted) return;
+
+           Debug.Log(_timerManager.CalculateTime()); 
         }
     }
 }

@@ -1,5 +1,4 @@
-using Managers.GameManager;
-using UnityEngine;
+using Managers;
 using Zenject;
 
 namespace Infrastructure
@@ -9,6 +8,7 @@ namespace Infrastructure
         public override void InstallBindings()
         {
             Container.Bind<GameManager>().AsSingle().Lazy();
+            Container.Bind<TimerManager>().AsSingle().Lazy();
         }
     }
 }

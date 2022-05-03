@@ -1,20 +1,21 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using Managers;
 using UnityEngine;
+using Zenject;
 
-public static class SaveManager 
+public static class SaveManager
 {
+    [Inject] private static UserManager _userManager;
+    
     public static void Save()
     {
         var saveDataPath = Application.persistentDataPath + "/SaveData.json"; ;
         
         var saveData = new SaveData()
         {
-            UserData = new UserData{User = UserManager.CurrentUser}
+            UserData = new UserData{User = _userManager.CurrentUser}
         };
 
         var json = JsonConvert.SerializeObject(saveData);

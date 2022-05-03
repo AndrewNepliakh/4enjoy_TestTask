@@ -10,4 +10,7 @@ public static class Constants
     public const int START_COINS_VALUE = 0;
 
     public const string MAIN_SCENE = "MainScene";
+
+    public const string TIMER_MANAGER = "TimerManager";
+    public const string USER_MANAGER = "UserManager";
 }

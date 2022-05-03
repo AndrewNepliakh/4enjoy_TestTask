@@ -1,5 +1,4 @@
-using Managers.StateManager;
-using UnityEngine;
+using Managers;
 using Zenject;
 
 namespace Infrastructure
@@ -9,6 +8,7 @@ namespace Infrastructure
         public override void InstallBindings()
         {
             Container.Bind<StateManager>().AsSingle();
+            Container.Bind<UserManager>().AsSingle();
         }
     }
 }

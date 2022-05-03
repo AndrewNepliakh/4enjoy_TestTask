@@ -4,7 +4,7 @@ using System.Linq;
 [Serializable]
 public class User
 {
-    private int _timer;
+    private float _timer; // In Seconds
     private int _health;
     private int _coins;
     
@@ -15,7 +15,7 @@ public class User
         _coins = Constants.START_COINS_VALUE;
     }
 
-    public int Timer
+    public float Timer
     {
         get
         {
