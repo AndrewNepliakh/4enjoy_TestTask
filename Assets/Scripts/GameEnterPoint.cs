@@ -1,15 +1,13 @@
-﻿using UnityEngine;
+﻿using Managers.StateManager;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using Zenject;
 
 public class GameEnterPoint : MonoBehaviour
 {
+    [Inject] private StateManager _stateManager;
     private void Awake()
     {
-        var saveData = SaveManager.Load();
-        UserManager.Init(saveData.UserData);
-    }
-
-    private void OnApplicationQuit()
-    {
-        SaveManager.Save();
+        _stateManager.EnterState<InitialState>();
     }
 }

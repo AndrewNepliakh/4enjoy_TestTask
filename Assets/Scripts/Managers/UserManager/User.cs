@@ -4,19 +4,15 @@ using System.Linq;
 [Serializable]
 public class User
 {
-    private const int START_TIME_VALUE = 20;
-    private const int START_HEALTH_VALUE = 5;
-    private const int START_COINS_VALUE = 0;
-
     private int _timer;
     private int _health;
     private int _coins;
     
     public User()
     {
-        _timer = START_TIME_VALUE;
-        _health = START_HEALTH_VALUE;
-        _coins = START_COINS_VALUE;
+        _timer = Constants.START_TIME_VALUE;
+        _health = Constants.START_HEALTH_VALUE;
+        _coins = Constants.START_COINS_VALUE;
     }
 
     public int Timer
@@ -24,7 +20,7 @@ public class User
         get
         {
             if (_timer < 0) return 0;
-            if (_timer > START_TIME_VALUE) return START_TIME_VALUE;
+            if (_timer > Constants.START_TIME_VALUE) return Constants.START_TIME_VALUE;
             return _timer;
         }
         set
@@ -35,9 +31,9 @@ public class User
                 return;
             }
             
-            if (value > START_TIME_VALUE)
+            if (value > Constants.START_TIME_VALUE)
             {
-                _timer = START_TIME_VALUE;
+                _timer = Constants.START_TIME_VALUE;
                 return;
             }
             
@@ -50,7 +46,7 @@ public class User
         get
         {
             if (_health < 0) return 0;
-            if (_health > 5) return START_HEALTH_VALUE;
+            if (_health > 5) return Constants.START_HEALTH_VALUE;
             return _health;
         }
        
@@ -63,9 +59,9 @@ public class User
                 return;
             }
             
-            if (value > START_HEALTH_VALUE)
+            if (value > Constants.START_HEALTH_VALUE)
             {
-                _health = START_HEALTH_VALUE;
+                _health = Constants.START_HEALTH_VALUE;
                 return;
             }
             
