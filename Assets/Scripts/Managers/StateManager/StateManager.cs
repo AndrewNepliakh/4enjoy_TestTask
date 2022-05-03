@@ -14,16 +14,18 @@ namespace Managers.StateManager
         {
             _states = new Dictionary<Type, IState>
             {
-                { typeof(InitialState), new InitialState()}
+                {typeof(InitialState), new InitialState()},
+                {typeof(GameState), new GameState()}
             };
         }
 
-        public void EnterState<T>() where T : IState
+        public IState EnterState<T>() where T : IState
         {
             _activeState?.Exit();
             var state = _states[typeof(T)];
             _activeState = state;
             state.Enter();
+            return state;
         }
     }
 }

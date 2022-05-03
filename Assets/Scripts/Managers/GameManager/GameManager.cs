@@ -1,8 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using Managers.StateManager;
 using UnityEngine;
+using Zenject;
 
-public class GameManager : MonoBehaviour
+namespace Managers.GameManager
 {
- 
+    public class GameManager : MonoBehaviour
+    {
+        [Inject] private StateManager.StateManager _stateManager;
+    
+        private void Start()
+        {
+            _stateManager.EnterState<GameState>();
+        }
+    
+    }
 }

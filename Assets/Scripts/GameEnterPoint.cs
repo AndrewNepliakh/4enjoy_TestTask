@@ -8,6 +8,6 @@ public class GameEnterPoint : MonoBehaviour
     [Inject] private StateManager _stateManager;
     private void Awake()
     {
-        _stateManager.EnterState<InitialState>();
+       _stateManager.EnterState<InitialState>();
     }
 }

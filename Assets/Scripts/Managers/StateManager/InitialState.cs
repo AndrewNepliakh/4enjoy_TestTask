@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.SceneManagement;
 using Zenject;
 
@@ -5,8 +6,6 @@ namespace Managers.StateManager
 {
     public class InitialState : IState
     {
-        [Inject] private StateManager _stateManager;
-
         public void Enter()
         {
             LoadUserData();
