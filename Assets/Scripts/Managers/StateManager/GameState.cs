@@ -27,7 +27,7 @@ namespace Managers
             
             _isStarted = true;
 
-            _healthPanel = _uiManager.ShowPanel<HealthPanelController>(Constants.HEALTH_PANEL_PATH);
+            _healthPanel = _uiManager.ShowPanel<HealthPanelController>(Constants.HEALTH_PANEL_PATH, args);
         }
 
         public void Exit()
@@ -38,7 +38,7 @@ namespace Managers
         public void Update()
         {
             if(!_isStarted) return;
-            _healthPanel.TimerText.text = _timerManager.CalculateTime();
+            _healthPanel.UpdateTimer(_timerManager.CalculateTime());
         }
     }
 }
