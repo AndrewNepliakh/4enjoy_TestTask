@@ -15,6 +15,8 @@ namespace Controllers.FloatingWindow
         [SerializeField] private Button _useLifeButton;
         [SerializeField] private Button _refillLivesButton;
 
+        private UIManager _uiManager;
+
         public TextMeshProUGUI TimerText
         {
             get => _timerText;
@@ -29,11 +31,20 @@ namespace Controllers.FloatingWindow
         
         public override void Show(Hashtable args)
         {
+            _uiManager = args[Constants.UI_MANAGER] as UIManager;
+            
+            _closeButton.onClick.AddListener(OnCloseButtonClick);
         }
         
         public override void Close()
         {
+            _closeButton.onClick.RemoveListener(OnCloseButtonClick);
            base.Close();
+        }
+
+        private void OnCloseButtonClick()
+        {
+            _uiManager.CloseWindow<FloatingWindowController>();
         }
     }
 }

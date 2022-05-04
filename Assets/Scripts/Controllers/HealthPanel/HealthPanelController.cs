@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using Managers;
 using TMPro;
@@ -15,6 +16,8 @@ namespace Controllers
 
         private IUserManager _userManager;
 
+        public Action OnPanelClick; 
+        
         public TextMeshProUGUI TimerText
         {
             get => _timerText;
@@ -34,7 +37,7 @@ namespace Controllers
 
         public void OnPointerClick(PointerEventData eventData)
         {
-           
+            OnPanelClick?.Invoke();
         }
     }
 }
