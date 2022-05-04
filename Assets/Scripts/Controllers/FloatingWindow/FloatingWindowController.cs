@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Controllers.FloatingWindow
 {
-    public class FloatingWindowController : Window
+    public class FloatingWindowController : Window, IButtonsSwitchableWindow
     {
         [SerializeField] private TextMeshProUGUI _timerText;
         [SerializeField] private TextMeshProUGUI _healthText;

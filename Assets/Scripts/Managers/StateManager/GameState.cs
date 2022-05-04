@@ -14,8 +14,8 @@ namespace Managers
         private IUserManager _userManager;
         private IUIManager _uiManager;
 
-        private HealthPanelController _healthPanel;
-        private FloatingWindowController _floatingWindow;
+        private IPanel _healthPanel;
+        private IButtonsSwitchableWindow _floatingWindow;
 
         private bool _isStarted;
 
@@ -49,13 +49,13 @@ namespace Managers
                 timer = UpdateTimer();
             }
             
-            if (_healthPanel)
+            if (_healthPanel != null)
             {
                 _healthPanel.TimerText.text = timer;
                 _healthPanel.HealthText.text = UpdateHealth();
             }
             
-            if (_floatingWindow)
+            if (_floatingWindow != null)
             {
                 _floatingWindow.TimerText.text = timer;
                 _floatingWindow.HealthText.text = UpdateHealth();
