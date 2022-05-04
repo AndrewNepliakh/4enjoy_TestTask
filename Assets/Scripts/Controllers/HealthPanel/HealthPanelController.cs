@@ -11,20 +11,20 @@ namespace Controllers
 {
     public class HealthPanelController : Panel, IPointerClickHandler
     {
+        public override Action OnPanelClick { get; set; }
+
         [SerializeField] private TextMeshProUGUI _timerText;
         [SerializeField] private TextMeshProUGUI _healthText;
 
         private IUserManager _userManager;
 
-        public Action OnPanelClick; 
-        
-        public TextMeshProUGUI TimerText
+        public override TextMeshProUGUI TimerText
         {
             get => _timerText;
             set => _timerText = value;
         }
 
-        public TextMeshProUGUI HealthText 
+        public override TextMeshProUGUI HealthText 
         {
             get => _healthText;
             set => _healthText = value;
