@@ -6,5 +6,5 @@ using Managers;
 [Serializable]
 public class UserData
 {
-    public IUser User;
+    public User User;
 }

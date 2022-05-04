@@ -5,7 +5,8 @@ using UnityEngine;
 
 public static class Constants 
 {
-    public const int START_TIME_VALUE = 20;
+    public const float START_TIME_VALUE = 20;
+    
     public const int START_HEALTH_VALUE = 5;
     public const int START_COINS_VALUE = 0;
 
@@ -13,4 +14,6 @@ public static class Constants
 
     public const string TIMER_MANAGER = "TimerManager";
     public const string USER_MANAGER = "UserManager";
+    
+    public const string TIMER_TEXT = "TimerText";
 }

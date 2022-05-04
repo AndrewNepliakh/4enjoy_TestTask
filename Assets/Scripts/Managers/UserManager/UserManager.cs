@@ -5,9 +5,9 @@ namespace Managers
 {
     public class UserManager : IUserManager
     {
-        private IUser _currentUser;
+        private User _currentUser;
 
-        public IUser CurrentUser
+        public User CurrentUser
         {
             get
             {
@@ -29,6 +29,7 @@ namespace Managers
             try
             {
                 _currentUser = userData.User;
+                if (userData.User == null) throw new NullReferenceException();
             }
             catch (Exception e)
             {

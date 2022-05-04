@@ -19,6 +19,9 @@ namespace Managers
         public string CalculateTime()
         {
             _timer -= Time.deltaTime;
+            
+            if (_timer <= 0) _timer = Constants.START_TIME_VALUE;
+
             _currentUser.Timer = _timer;
             return FormatTime(_timer);
         }

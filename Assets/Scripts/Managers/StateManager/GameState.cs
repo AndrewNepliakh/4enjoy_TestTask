@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -9,6 +10,7 @@ namespace Managers
     {
         private ITimer _timerManager;
         private UserManager _userManager;
+        private TextMeshProUGUI _timerText;
         
         private bool _isStarted;
         
@@ -16,12 +18,11 @@ namespace Managers
         {
             _timerManager = args[Constants.TIMER_MANAGER] as TimerManager;
             _userManager = args[Constants.USER_MANAGER] as UserManager;
+            _timerText = args[Constants.TIMER_TEXT] as TextMeshProUGUI;
             
             _timerManager.Init(_userManager);
             
             _isStarted = true;
-            
-            Debug.LogError("Enter GameSate");
         }
 
         public void Exit()
@@ -32,8 +33,7 @@ namespace Managers
         public void Update()
         {
             if(!_isStarted) return;
-
-           Debug.Log(_timerManager.CalculateTime()); 
+            _timerText.text = _timerManager.CalculateTime();
         }
     }
 }

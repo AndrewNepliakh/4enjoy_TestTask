@@ -7,15 +7,13 @@ using Zenject;
 
 public static class SaveManager
 {
-    [Inject] private static UserManager _userManager;
-    
-    public static void Save()
+    public static void Save(UserManager userManager)
     {
         var saveDataPath = Application.persistentDataPath + "/SaveData.json"; ;
         
         var saveData = new SaveData()
         {
-            UserData = new UserData{User = _userManager.CurrentUser}
+            UserData = new UserData{User = userManager.CurrentUser}
         };
 
         var json = JsonConvert.SerializeObject(saveData);
@@ -54,10 +52,9 @@ public static class SaveManager
 
     private static SaveData GetDefaultSaveData()
     {
-        var lastUser = new User();
         return new SaveData
         {
-            UserData = new UserData{User = lastUser}
+            UserData = new UserData{User = new User()}
         };
     }
 }
