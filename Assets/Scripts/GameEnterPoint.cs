@@ -5,8 +5,8 @@ using Zenject;
 
 public class GameEnterPoint : MonoBehaviour
 {
-    [Inject] private StateManager _stateManager;
-    [Inject] private UserManager _userManager;
+    [Inject] private IStateManager _stateManager;
+    [Inject] private IUserManager _userManager;
     
     private void Awake()
     {

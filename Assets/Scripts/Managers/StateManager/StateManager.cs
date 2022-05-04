@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class StateManager
+    public class StateManager : IStateManager
     {
         public IState ActiveState => _activeState;
         

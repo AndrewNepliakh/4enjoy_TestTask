@@ -7,8 +7,9 @@ namespace Infrastructure
     {
         public override void InstallBindings()
         {
-            Container.Bind<StateManager>().AsSingle();
-            Container.Bind<UserManager>().AsSingle();
+            Container.Bind<IStateManager>().To<StateManager>().AsSingle();
+            Container.Bind<IUserManager>().To<UserManager>().AsSingle();
         }
     }
+    
 }

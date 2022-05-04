@@ -4,13 +4,12 @@ using Zenject;
 
 namespace Managers
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoBehaviour, IGameManager
     {
-        [Inject] private StateManager _stateManager;
-        [Inject] private TimerManager _timerManager;
-        [Inject] private UserManager _userManager;
-
-        [SerializeField] private UIManager _uiManager;
+        [Inject] private IStateManager _stateManager;
+        [Inject] private ITimer _timerManager;
+        [Inject] private IUserManager _userManager;
+        [Inject] private IUIManager _uiManager;
 
         private void Start()
         {

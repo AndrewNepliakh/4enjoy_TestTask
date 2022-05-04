@@ -7,7 +7,7 @@ using Zenject;
 
 public static class SaveManager
 {
-    public static void Save(UserManager userManager)
+    public static void Save(IUserManager userManager)
     {
         var saveDataPath = Application.persistentDataPath + "/SaveData.json"; ;
         
