@@ -17,6 +17,7 @@ public static class Constants
     public const string UI_MANAGER = "UIManager";
     
     public const string TIMER_TEXT = "TimerText";
+    public const string FULL_TEXT = "Full";
     
     public const string HEALTH_PANEL_PATH = "Prefabs/UI/HealthPanel";
     

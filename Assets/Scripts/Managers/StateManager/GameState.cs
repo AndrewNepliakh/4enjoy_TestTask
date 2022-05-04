@@ -42,19 +42,45 @@ namespace Managers
         {
             if (!_isStarted) return;
 
-            if (_healthPanel) _healthPanel.TimerText.text = UpdateTimer();
-            if (_floatingWindow) _floatingWindow.TimerText.text = UpdateTimer();
+            var timer = Constants.FULL_TEXT;
+            
+            if (_userManager.CurrentUser.Health != Constants.START_HEALTH_VALUE)
+            {
+                timer = UpdateTimer();
+            }
+            
+            if (_healthPanel)
+            {
+                _healthPanel.TimerText.text = timer;
+                _healthPanel.HealthText.text = UpdateHealth();
+            }
+            
+            if (_floatingWindow)
+            {
+                _floatingWindow.TimerText.text = timer;
+                _floatingWindow.HealthText.text = UpdateHealth();
+                _floatingWindow.CheckForSwitchingButtons();
+            }
+        }
+
+        private string UpdateHealth()
+        {
+            return _userManager.CurrentUser.Health.ToString();
         }
 
         private string UpdateTimer()
         {
             var value = _timerManager.CalculateTime();
-            return _userManager.CurrentUser.Health >= Constants.START_HEALTH_VALUE ? "Full" : value;
+            return _userManager.CurrentUser.Health >= Constants.START_HEALTH_VALUE ? Constants.FULL_TEXT : value;
         }
 
         private void OpenFloatingWindow()
         {
-            var args = new Hashtable { { Constants.UI_MANAGER, _uiManager } };
+            var args = new Hashtable
+            {
+                { Constants.UI_MANAGER, _uiManager },
+                { Constants.USER_MANAGER, _userManager }
+            };
             _floatingWindow = _uiManager.ShowWindow<FloatingWindowController>(Constants.FLOATING_WINDOW_PATH, args);
         }
     }

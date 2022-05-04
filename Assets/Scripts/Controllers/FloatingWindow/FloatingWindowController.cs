@@ -20,6 +20,7 @@ namespace Controllers.FloatingWindow
         [SerializeField] private Button _refillLivesButton;
 
         private UIManager _uiManager;
+        private UserManager _userManager;
 
         public TextMeshProUGUI TimerText
         {
@@ -38,21 +39,49 @@ namespace Controllers.FloatingWindow
             if(CheckForMotion()) return;
             
             _uiManager = args[Constants.UI_MANAGER] as UIManager;
+            _userManager = args[Constants.USER_MANAGER] as UserManager;
             
             _darker.FadeInDarker();
             _sliderContainer.SlideIn();
             _darker.OnClick += OnCloseButtonClick;
+            
             _closeButton.onClick.AddListener(OnCloseButtonClick);
+            _useLifeButton.onClick.AddListener(OnUseLifeButtonClick);
+            _refillLivesButton.onClick.AddListener(OnRefillLivesButtonClick);
         }
         
         public override void Close()
         {
             _container.SetActive(true);
+
             _darker.OnComplete -= OnClose;
             _darker.OnClick -= OnCloseButtonClick;
+
             _closeButton.onClick.RemoveListener(OnCloseButtonClick);
+            _useLifeButton.onClick.RemoveListener(OnUseLifeButtonClick);
+            _refillLivesButton.onClick.RemoveListener(OnRefillLivesButtonClick);
             
            base.Close();
+        }
+
+        public void CheckForSwitchingButtons()
+        {
+            if (_userManager.CurrentUser.Health >= Constants.START_HEALTH_VALUE)
+            {
+                _useLifeButton.gameObject.SetActive(true);
+                _refillLivesButton.gameObject.SetActive(false);
+                return;
+            }
+
+            if (_userManager.CurrentUser.Health <= 0)
+            {
+                _useLifeButton.gameObject.SetActive(false);
+                _refillLivesButton.gameObject.SetActive(true);
+                return;
+            }
+            
+            _useLifeButton.gameObject.SetActive(true);
+            _refillLivesButton.gameObject.SetActive(true);
         }
 
         private void OnCloseButtonClick()
@@ -62,6 +91,18 @@ namespace Controllers.FloatingWindow
             _darker.FadeOutDarker();
             _sliderContainer.SlideOut();
             _darker.OnComplete += OnClose;
+        }
+
+        private void OnUseLifeButtonClick()
+        {
+            _userManager.CurrentUser.Health--;
+            _userManager.CurrentUser.Timer = Constants.START_TIME_VALUE;
+        }
+
+        private void OnRefillLivesButtonClick()
+        {
+            _userManager.CurrentUser.Health = Constants.START_HEALTH_VALUE;
+            _userManager.CurrentUser.Timer = Constants.START_TIME_VALUE;
         }
 
         private void OnClose()

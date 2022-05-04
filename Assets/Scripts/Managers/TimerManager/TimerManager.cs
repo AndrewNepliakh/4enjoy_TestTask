@@ -4,32 +4,30 @@ namespace Managers
 {
     public class TimerManager : ITimer
     {
-       private IUserManager _userManager;
-        
-        private IUser _currentUser;
-        private float _timer; // In seconds
+        private IUserManager _userManager;
 
         public void Init(IUserManager userManager)
         {
             _userManager = userManager;
-            _currentUser = _userManager.CurrentUser;
-            _timer = _currentUser.Timer;
         }
 
         public string CalculateTime()
         {
-            _timer -= Time.deltaTime;
-            
-            if (_timer <= 0) _timer = Constants.START_TIME_VALUE;
+            _userManager.CurrentUser.Timer -= Time.deltaTime;
 
-            _currentUser.Timer = _timer;
-            return FormatTime(_timer);
+            if (_userManager.CurrentUser.Timer <= 0)
+            {
+                _userManager.CurrentUser.Timer = Constants.START_TIME_VALUE;
+                _userManager.CurrentUser.Health++;
+            }
+
+            return FormatTime(_userManager.CurrentUser.Timer);
         }
-        
+
         private string FormatTime(float time)
         {
-            var minutes = (int) time / 60 ;
-            var seconds = (int) time - 60 * minutes;
+            var minutes = (int)time / 60;
+            var seconds = (int)time - 60 * minutes;
             return $"{minutes:00}:{seconds:00}";
         }
     }

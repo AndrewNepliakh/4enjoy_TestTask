@@ -50,8 +50,7 @@ namespace Managers
                 if (_health > 5) return Constants.START_HEALTH_VALUE;
                 return _health;
             }
-       
-        
+            
             set
             {
                 if (value < 0)
