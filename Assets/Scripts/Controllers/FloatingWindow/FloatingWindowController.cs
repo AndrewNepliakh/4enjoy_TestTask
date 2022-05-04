@@ -12,6 +12,7 @@ namespace Controllers.FloatingWindow
         [SerializeField] private TextMeshProUGUI _healthText;
         [Space(20)] 
         [SerializeField] private GameObject _container;
+        [SerializeField] private SliderContainer _sliderContainer;
         [SerializeField] private Darker _darker;
         [Space (20)]
         [SerializeField] private Button _closeButton;
@@ -34,8 +35,13 @@ namespace Controllers.FloatingWindow
         
         public override void Show(Hashtable args)
         {
+            if(CheckForMotion()) return;
+            
             _uiManager = args[Constants.UI_MANAGER] as UIManager;
+            
             _darker.FadeInDarker();
+            _sliderContainer.SlideIn();
+            _darker.OnClick += OnCloseButtonClick;
             _closeButton.onClick.AddListener(OnCloseButtonClick);
         }
         
@@ -43,14 +49,18 @@ namespace Controllers.FloatingWindow
         {
             _container.SetActive(true);
             _darker.OnComplete -= OnClose;
+            _darker.OnClick -= OnCloseButtonClick;
             _closeButton.onClick.RemoveListener(OnCloseButtonClick);
+            
            base.Close();
         }
 
         private void OnCloseButtonClick()
         {
-            _container.SetActive(false);
+            if(CheckForMotion()) return;
+            
             _darker.FadeOutDarker();
+            _sliderContainer.SlideOut();
             _darker.OnComplete += OnClose;
         }
 
@@ -58,5 +68,7 @@ namespace Controllers.FloatingWindow
         {
             _uiManager.CloseWindow<FloatingWindowController>();
         }
+
+        private bool CheckForMotion() => _darker.IsMoving;
     }
 }
