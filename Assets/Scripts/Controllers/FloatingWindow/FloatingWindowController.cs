@@ -1,19 +1,19 @@
-
 using System.Collections;
 using Managers;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using Zenject;
+using UnityEngine.UI;
 
-namespace Controllers
+namespace Controllers.FloatingWindow
 {
-    public class HealthPanelController : Panel, IPointerClickHandler
+    public class FloatingWindowController : Window
     {
         [SerializeField] private TextMeshProUGUI _timerText;
         [SerializeField] private TextMeshProUGUI _healthText;
-
-        private IUserManager _userManager;
+        
+        [SerializeField] private Button _closeButton;
+        [SerializeField] private Button _useLifeButton;
+        [SerializeField] private Button _refillLivesButton;
 
         public TextMeshProUGUI TimerText
         {
@@ -26,15 +26,14 @@ namespace Controllers
             get => _healthText;
             set => _healthText = value;
         }
-
+        
         public override void Show(Hashtable args)
         {
-            _userManager = args[Constants.USER_MANAGER] as UserManager;
         }
-
-        public void OnPointerClick(PointerEventData eventData)
+        
+        public override void Close()
         {
-           
+           base.Close();
         }
     }
 }

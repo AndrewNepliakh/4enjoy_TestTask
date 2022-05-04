@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Controllers;
+using Controllers.FloatingWindow;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -14,6 +15,7 @@ namespace Managers
         private IUIManager _uiManager;
         
         private HealthPanelController _healthPanel;
+        private FloatingWindowController _floatingWindow;
         
         private bool _isStarted;
         
@@ -28,6 +30,7 @@ namespace Managers
             _isStarted = true;
 
             _healthPanel = _uiManager.ShowPanel<HealthPanelController>(Constants.HEALTH_PANEL_PATH, args);
+            _floatingWindow = _timerManager.
         }
 
         public void Exit()
@@ -38,7 +41,13 @@ namespace Managers
         public void Update()
         {
             if(!_isStarted) return;
-            _healthPanel.UpdateTimer(_timerManager.CalculateTime());
+            _healthPanel.TimerText.text = UpdateTimer();
+        }
+
+        private string UpdateTimer()
+        {
+            var value = _timerManager.CalculateTime();
+            return _userManager.CurrentUser.Health >= Constants.START_HEALTH_VALUE ? "Full" : value;
         }
     }
 }
