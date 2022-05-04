@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Managers
 {
-    public class Darker : MonoBehaviour, IDarker
+    public class Darker : MonoBehaviour
     {
         public Action OnComplete;
         public Action OnClick;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class SliderContainer : MonoBehaviour, ISliderContainer
+    public class SliderContainer : MonoBehaviour
     {
         [SerializeField] private Transform _container;
 
