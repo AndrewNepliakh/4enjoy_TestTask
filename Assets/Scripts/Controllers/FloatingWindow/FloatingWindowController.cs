@@ -10,7 +10,10 @@ namespace Controllers.FloatingWindow
     {
         [SerializeField] private TextMeshProUGUI _timerText;
         [SerializeField] private TextMeshProUGUI _healthText;
-        
+        [Space(20)] 
+        [SerializeField] private GameObject _container;
+        [SerializeField] private Darker _darker;
+        [Space (20)]
         [SerializeField] private Button _closeButton;
         [SerializeField] private Button _useLifeButton;
         [SerializeField] private Button _refillLivesButton;
@@ -32,17 +35,26 @@ namespace Controllers.FloatingWindow
         public override void Show(Hashtable args)
         {
             _uiManager = args[Constants.UI_MANAGER] as UIManager;
-            
+            _darker.FadeInDarker();
             _closeButton.onClick.AddListener(OnCloseButtonClick);
         }
         
         public override void Close()
         {
+            _container.SetActive(true);
+            _darker.OnComplete -= OnClose;
             _closeButton.onClick.RemoveListener(OnCloseButtonClick);
            base.Close();
         }
 
         private void OnCloseButtonClick()
+        {
+            _container.SetActive(false);
+            _darker.FadeOutDarker();
+            _darker.OnComplete += OnClose;
+        }
+
+        private void OnClose()
         {
             _uiManager.CloseWindow<FloatingWindowController>();
         }
