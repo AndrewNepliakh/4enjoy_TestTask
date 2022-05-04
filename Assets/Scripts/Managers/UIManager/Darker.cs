@@ -14,6 +14,7 @@ namespace Managers
         [SerializeField] private Image _darkerImage;
 
         private float _fadeSpeed = 2.0f;
+        private float _darknessValue = 0.7f;
 
         private Coroutine _fadeInRoutine;
         private Coroutine _fadeOutRoutine;
@@ -48,14 +49,14 @@ namespace Managers
             var a = 0.0f;
             var offSetColor = new Color(_darkerImage.color.r, _darkerImage.color.g, _darkerImage.color.b, a);
             _darkerImage.color = offSetColor;
-            while (_darkerImage.color.a < 0.4f)
+            while (_darkerImage.color.a < _darknessValue - 0.1f)
             {
                 offSetColor.a += Time.deltaTime * _fadeSpeed;
                 _darkerImage.color = offSetColor;
                 yield return null;
             }
 
-            offSetColor.a = 0.5f;
+            offSetColor.a = _darknessValue;
             _darkerImage.color = offSetColor;
 
             _isMoving = false;
@@ -65,7 +66,7 @@ namespace Managers
         {
             _isMoving = true;
             
-            var a = 0.5f;
+            var a = _darknessValue;
             var offSetColor = new Color(_darkerImage.color.r, _darkerImage.color.g, _darkerImage.color.b, a);
             _darkerImage.color = offSetColor;
             while (_darkerImage.color.a > 0.0f)
