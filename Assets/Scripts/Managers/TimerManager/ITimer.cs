@@ -2,7 +2,7 @@ namespace Managers
 {
     public interface ITimer
     {
-        void Init(UserManager userManager);
+        void Init(IUserManager userManager);
         string CalculateTime();
     }
 }

@@ -4,12 +4,12 @@ namespace Managers
 {
     public class TimerManager : ITimer
     {
-       private UserManager _userManager;
+       private IUserManager _userManager;
         
         private IUser _currentUser;
         private float _timer; // In seconds
 
-        public void Init(UserManager userManager)
+        public void Init(IUserManager userManager)
         {
             _userManager = userManager;
             _currentUser = _userManager.CurrentUser;

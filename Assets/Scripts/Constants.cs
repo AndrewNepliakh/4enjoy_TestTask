@@ -14,6 +14,8 @@ public static class Constants
 
     public const string TIMER_MANAGER = "TimerManager";
     public const string USER_MANAGER = "UserManager";
+    public const string UI_MANAGER = "UIManager";
     
     public const string TIMER_TEXT = "TimerText";
+    public const string HEALTH_PANEL_PATH = "Prefabs/UI/Health_panel";
 }

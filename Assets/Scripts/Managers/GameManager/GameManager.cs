@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -12,7 +10,7 @@ namespace Managers
         [Inject] private TimerManager _timerManager;
         [Inject] private UserManager _userManager;
 
-        [SerializeField] private TextMeshProUGUI _timerText;
+        [SerializeField] private UIManager _uiManager;
 
         private void Start()
         {
@@ -20,7 +18,7 @@ namespace Managers
             {
                 {Constants.TIMER_MANAGER, _timerManager},
                 {Constants.USER_MANAGER, _userManager},
-                {Constants.TIMER_TEXT, _timerText}
+                {Constants.UI_MANAGER, _uiManager}
             };
             
             _stateManager.EnterState<GameState>(args);
