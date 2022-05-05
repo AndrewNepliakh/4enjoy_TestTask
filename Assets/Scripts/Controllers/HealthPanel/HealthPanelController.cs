@@ -16,8 +16,6 @@ namespace Controllers
         [SerializeField] private TextMeshProUGUI _timerText;
         [SerializeField] private TextMeshProUGUI _healthText;
 
-        private IUserManager _userManager;
-
         public override TextMeshProUGUI TimerText
         {
             get => _timerText;
@@ -28,11 +26,6 @@ namespace Controllers
         {
             get => _healthText;
             set => _healthText = value;
-        }
-
-        public override void Show(Hashtable args)
-        {
-            _userManager = args[Constants.USER_MANAGER] as UserManager;
         }
 
         public void OnPointerClick(PointerEventData eventData)

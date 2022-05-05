@@ -165,7 +165,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5536427395575827900}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.869, y: 0.74}
   m_AnchorMax: {x: 1.0135579, y: 0.87000006}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 5536427395383237002}
   - component: {fileID: 5536427395383237001}
   m_Layer: 5
-  m_Name: BottomButtons
+  m_Name: GroupElements
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,15 +282,17 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 5536427396604272540}
+  - {fileID: 5536427397296698406}
   - {fileID: 5536427396592822465}
   - {fileID: 5536427397134386411}
   m_Father: {fileID: 5536427395575827900}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.065000005}
   m_AnchorMax: {x: 1, y: 0.43600002}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 206}
+  m_SizeDelta: {x: 0, y: 483.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5536427395383237001
 MonoBehaviour:
@@ -310,7 +312,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: -100
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -350,8 +352,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5536427396873183327}
-  - {fileID: 5536427396604272540}
-  - {fileID: 5536427397296698406}
   - {fileID: 5536427395383237002}
   - {fileID: 5536427395376412108}
   m_Father: {fileID: 5536427396336319849}
@@ -806,7 +806,7 @@ RectTransform:
   m_Children:
   - {fileID: 5536427395364758326}
   m_Father: {fileID: 5536427395383237002}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -920,18 +920,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5536427396604272541}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5536427397453089924}
-  m_Father: {fileID: 5536427395575827900}
-  m_RootOrder: 1
+  m_Father: {fileID: 5536427395383237002}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.34655792, y: 0.55600005}
-  m_AnchorMax: {x: 0.6586685, y: 0.813}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 281.4286, y: 257.14285}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5536427396604272530
 CanvasRenderer:
@@ -1137,7 +1137,7 @@ RectTransform:
   m_Children:
   - {fileID: 5536427395761356690}
   m_Father: {fileID: 5536427395383237002}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1251,17 +1251,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5536427397296698407}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5536427395575827900}
-  m_RootOrder: 2
+  m_Father: {fileID: 5536427395383237002}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.34655792, y: 0.43600002}
-  m_AnchorMax: {x: 0.654221, y: 0.54800004}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 300, y: 113.0111}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5536427397296698404
 CanvasRenderer:
@@ -1318,7 +1318,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 93.2
+  m_fontSize: 94.15
   m_fontSizeBase: 94
   m_fontWeight: 400
   m_enableAutoSizing: 1

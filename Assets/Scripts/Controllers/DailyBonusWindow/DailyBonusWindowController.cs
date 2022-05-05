@@ -12,7 +12,7 @@ namespace Controllers.DailyBonusWindow
         [SerializeField] private TextMeshProUGUI _coinsText;
         [SerializeField] private Button _claimButton;
         
-        private UIManager _uiManager;
+        private IUIManager _uiManager;
 
         public override void Show(Hashtable args)
         {

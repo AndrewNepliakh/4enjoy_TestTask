@@ -17,7 +17,6 @@ namespace Managers
         private IDailyBonusManager _dailyBonusManager;
 
         private IPanel _healthPanel;
-        private IWindow _dailyBonusWindow;
         private IButtonsSwitchableWindow _floatingWindow;
 
         private bool _isStarted;
@@ -33,7 +32,7 @@ namespace Managers
 
             _isStarted = true;
 
-            _healthPanel = _uiManager.ShowPanel<HealthPanelController>(Constants.HEALTH_PANEL_PATH, args);
+            _healthPanel = _uiManager.ShowPanel<HealthPanelController>(Constants.HEALTH_PANEL_PATH);
             _healthPanel.OnPanelClick += OpenFloatingWindow;
 
             if (_dailyBonusManager != null && _dailyBonusManager.CheckForDailyBonus(_userManager))
@@ -43,7 +42,8 @@ namespace Managers
                     {Constants.UI_MANAGER, _uiManager},
                     {Constants.DAILY_BONUS_COINS_VALUE, _dailyBonusManager.GetCoinsFromDate().ToString()}
                 };
-                _dailyBonusWindow = _uiManager.ShowWindow<DailyBonusWindowController>(Constants.DAILY_WINDOW_PATH, dailyArgs);
+                
+                _uiManager.ShowWindow<DailyBonusWindowController>(Constants.DAILY_WINDOW_PATH, dailyArgs);
             }
         }
 
@@ -73,7 +73,7 @@ namespace Managers
             {
                 _floatingWindow.TimerText.text = timer;
                 _floatingWindow.HealthText.text = UpdateHealth();
-                _floatingWindow.CheckForSwitchingButtons();
+                _floatingWindow.CheckForSwitchingElements();
             }
         }
 

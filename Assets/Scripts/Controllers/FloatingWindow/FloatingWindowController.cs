@@ -19,8 +19,8 @@ namespace Controllers.FloatingWindow
         [SerializeField] private Button _useLifeButton;
         [SerializeField] private Button _refillLivesButton;
 
-        private UIManager _uiManager;
-        private UserManager _userManager;
+        private IUIManager _uiManager;
+        private IUserManager _userManager;
 
         public TextMeshProUGUI TimerText
         {
@@ -64,12 +64,13 @@ namespace Controllers.FloatingWindow
            base.Close();
         }
 
-        public void CheckForSwitchingButtons()
+        public void CheckForSwitchingElements()
         {
             if (_userManager.CurrentUser.Health >= Constants.START_HEALTH_VALUE)
             {
                 _useLifeButton.gameObject.SetActive(true);
                 _refillLivesButton.gameObject.SetActive(false);
+                _timerText.gameObject.SetActive(false);
                 return;
             }
 
@@ -77,11 +78,13 @@ namespace Controllers.FloatingWindow
             {
                 _useLifeButton.gameObject.SetActive(false);
                 _refillLivesButton.gameObject.SetActive(true);
+                _timerText.gameObject.SetActive(true);
                 return;
             }
             
             _useLifeButton.gameObject.SetActive(true);
             _refillLivesButton.gameObject.SetActive(true);
+            _timerText.gameObject.SetActive(true);
         }
 
         private void OnCloseButtonClick()

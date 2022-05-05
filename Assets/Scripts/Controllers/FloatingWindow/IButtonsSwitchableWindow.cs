@@ -6,6 +6,6 @@ namespace Controllers.FloatingWindow
     {
         TextMeshProUGUI TimerText { get; set; }
         TextMeshProUGUI HealthText { get; set; }
-        void CheckForSwitchingButtons();
+        void CheckForSwitchingElements();
     }
 }
