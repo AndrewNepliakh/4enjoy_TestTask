@@ -6,9 +6,10 @@ namespace Managers
     public class User : IUser
     {
         private float _timer; // In Seconds
+        private DateTime _presentTime;
         private int _health;
         private int _coins;
-    
+
         public User()
         {
             _timer = Constants.START_TIME_VALUE;
@@ -40,6 +41,12 @@ namespace Managers
             
                 _timer = value;
             }
+        }
+        
+        public DateTime PresentTime
+        {
+            get => _presentTime;
+            set => _presentTime = value;
         }
     
         public int Health

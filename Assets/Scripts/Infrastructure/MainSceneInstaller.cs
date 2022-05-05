@@ -11,6 +11,7 @@ namespace Infrastructure
         public override void InstallBindings()
         {
             Container.Bind<ITimer>().To<TimerManager>().AsSingle();
+            Container.Bind<IDailyBonusManager>().To<DailyBonusManager>().AsSingle();
             Container.Bind<IUIManager>().FromInstance(_uiManager).AsSingle();
         }
     }

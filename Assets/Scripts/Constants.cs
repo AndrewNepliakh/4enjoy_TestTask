@@ -15,11 +15,13 @@ public static class Constants
     public const string TIMER_MANAGER = "TimerManager";
     public const string USER_MANAGER = "UserManager";
     public const string UI_MANAGER = "UIManager";
+    public const string DAILY_BONUS_MANAGER = "DailyBonusManager";
+    public const string DAILY_BONUS_COINS_VALUE = "DailyBonus";
     
     public const string TIMER_TEXT = "TimerText";
     public const string FULL_TEXT = "Full";
-    
+
     public const string HEALTH_PANEL_PATH = "Prefabs/UI/HealthPanel";
-    
     public const string FLOATING_WINDOW_PATH = "Prefabs/UI/FloatingWindow";
+    public const string DAILY_WINDOW_PATH = "Prefabs/UI/DailyBonusWindow";
 }

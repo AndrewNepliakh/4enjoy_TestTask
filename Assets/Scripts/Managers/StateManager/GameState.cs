@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Controllers;
+using Controllers.DailyBonusWindow;
 using Controllers.FloatingWindow;
 using TMPro;
 using UnityEngine;
@@ -11,19 +12,22 @@ namespace Managers
     public class GameState : IState
     {
         private ITimer _timerManager;
-        private IUserManager _userManager;
         private IUIManager _uiManager;
+        private IUserManager _userManager;
+        private IDailyBonusManager _dailyBonusManager;
 
         private IPanel _healthPanel;
+        private IWindow _dailyBonusWindow;
         private IButtonsSwitchableWindow _floatingWindow;
 
         private bool _isStarted;
 
         public void Enter(Hashtable args)
         {
-            _timerManager = args[Constants.TIMER_MANAGER] as TimerManager;
-            _userManager = args[Constants.USER_MANAGER] as UserManager;
             _uiManager = args[Constants.UI_MANAGER] as UIManager;
+            _userManager = args[Constants.USER_MANAGER] as UserManager;
+            _timerManager = args[Constants.TIMER_MANAGER] as TimerManager;
+            _dailyBonusManager = args[Constants.DAILY_BONUS_MANAGER] as DailyBonusManager;
 
             _timerManager.Init(_userManager);
 
@@ -31,6 +35,16 @@ namespace Managers
 
             _healthPanel = _uiManager.ShowPanel<HealthPanelController>(Constants.HEALTH_PANEL_PATH, args);
             _healthPanel.OnPanelClick += OpenFloatingWindow;
+
+            if (_dailyBonusManager != null && _dailyBonusManager.CheckForDailyBonus(_userManager))
+            {
+                var dailyArgs = new Hashtable
+                {
+                    {Constants.UI_MANAGER, _uiManager},
+                    {Constants.DAILY_BONUS_COINS_VALUE, _dailyBonusManager.GetCoinsFromDate().ToString()}
+                };
+                _dailyBonusWindow = _uiManager.ShowWindow<DailyBonusWindowController>(Constants.DAILY_WINDOW_PATH, dailyArgs);
+            }
         }
 
         public void Exit()
